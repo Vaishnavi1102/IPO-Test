@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom base styles matching Figma */
+@layer base {
+  body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #F6F5F5;
+  }
+}
+
+/* Design system colors matching Figma */
+:root {
+  --primary-blue: #414BEA;
+  --secondary-blue: #3F52FF;
+  --orange: #F05537;
+  --background: #F6F5F5;
+  --card-background: #FFFFFF;
+  --text-primary: #000000;
+  --text-secondary: #5A5858;
+  --text-tertiary: #9A9A9A;
+  --border-color: #E5E5E5;
+}
+
+/* Custom utilities for Figma design */
+@layer utilities {
+  .text-primary-blue {
+    color: var(--primary-blue);
+  }
+  
+  .text-secondary-blue {
+    color: var(--secondary-blue);
+  }
+  
+  .text-orange {
+    color: var(--orange);
+  }
+  
+  .bg-primary-blue {
+    background-color: var(--primary-blue);
+  }
+  
+  .bg-secondary-blue {
+    background-color: var(--secondary-blue);
+  }
+  
+  .bg-orange {
+    background-color: var(--orange);
+  }
+  
+  .bg-card {
+    background-color: var(--card-background);
+  }
+  
+  .text-primary {
+    color: var(--text-primary);
+  }
+  
+  .text-secondary {
+    color: var(--text-secondary);
+  }
+  
+  .text-tertiary {
+    color: var(--text-tertiary);
+  }
+  
+  /* Figma-specific backdrop blur effect */
+  .backdrop-blur-figma {
+    backdrop-filter: blur(9.25px);
+  }
+  
+  /* Figma box shadow */
+  .shadow-figma {
+    filter: drop-shadow(0px 8px 6.5px rgba(202, 202, 202, 0.25));
+  }
+}
+
+/* Mobile-optimized scrollbar */
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 2px;
+  }
+}
