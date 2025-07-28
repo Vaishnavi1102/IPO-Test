@@ -11,7 +11,7 @@ const AdminLayout = ({ children }) => {
             <AdminSidebar isOpen={sidebarOpen} />
 
             {/* Main Content */}
-            <div className={"flex-1 transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-16'}"}>
+            <div className={`flex-1 transition-all duration-300 ${sidebarOpen ? 'ml-64' : 'ml-16'}`}>
                 
                 {/* Header */}
                 <AdminHeader 
@@ -27,3 +27,5 @@ const AdminLayout = ({ children }) => {
         </div>
     );
 }
+
+export default AdminLayout;

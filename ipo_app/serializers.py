@@ -13,7 +13,7 @@ class CompanySerializer(serializers.ModelSerializer):
 
 class IPOListSerializer(serializers.ModelSerializer):
     """Serializer for IPO list view with essential fields"""
-    company_name = serializers.ReadOnlyFields()
+    company_name = serializers.ReadOnlyField()
     logo = serializers.ReadOnlyField()
     listing_gain = serializers.ReadOnlyField()
     current_return = serializers.ReadOnlyField()

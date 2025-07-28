@@ -1,6 +1,6 @@
 import React , { useState } from 'react';
 import Header from '../components/common/Header';
-import SearchFilter from '../componets/ipo/SearchFilter';
+import SearchFilter from '../components/ipo/SearchFilter';
 import IPOGrid from '../components/ipo/IPOGrid';
 import IPODetailModal from '../components/ipo/IPODetailModal';
 import FAQSection from '../components/ipo/FAQSection';

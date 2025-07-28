@@ -1,16 +1,16 @@
-import { usestate, useEffect, useMemo} from 'react';
+import { useState, useEffect, useMemo} from 'react';
 
 // API Configuration
 const API_BASE_URL = 'https://localhost:8000/api/ipo';
 
 const useIPOData = () => {
-    const [ipos, setIpos] = usestate([]);
-    const [searchTerm, setSearchTerm] = usestate('');
-    const [statusFilter, setStatusFilter] = usestate('');
-    const [sectorFilter, setSectorFilter] = usestate('');
-    const [loading, setLoading] = usestate(true);
-    const [error, setError] = usestate(null);
-    const [statusCounts, setStatusCounts] = usestate({});
+    const [ipos, setIpos] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [statusFilter, setStatusFilter] = useState('');
+    const [sectorFilter, setSectorFilter] = useState('');
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [statusCounts, setStatusCounts] = useState({});
 
     //Fetch IPO data from backend
     const fetchIpos = async () => {
@@ -34,7 +34,7 @@ const useIPOData = () => {
             }
             const response = await fetch(url);
             if (!response.ok) {
-                throw new Error('HTTP error! staus: ${response.status}');
+                throw new Error(`HTTP error! staus: ${response.status}`);
 
             }
             const data = await response.json();
@@ -58,7 +58,7 @@ const useIPOData = () => {
     // Fetch statistics from backend
     const fetchStats = async () => {
         try {
-            const response = await fetch('$"{API_BASE_URL}/stats/');
+            const response = await fetch(`$"{API_BASE_URL}/stats/`);
             if (response.ok) {
                 const stats = await response.json();
                 setStatusCounts({
@@ -80,7 +80,7 @@ const useIPOData = () => {
                 id: backendIPO.id,
                 company: {
                     name: backendIPO.company_name,
-                    logo: backendIPO.logo || '/images/default-android app icon (1).png',
+                    logo: backendIPO.logo || '/images/default-android app-icon (1).png',
                     sector: backendIPO.issue_type || 'Technology' // Map to sector if available 
                     },
                     priceBand: backendIPO.price_band,
@@ -106,14 +106,14 @@ const useIPOData = () => {
 
 // Initial data fetch
 useEffect(() => {
-    fetchIPOs();
+    fetchIpos();
     fetchStats();
 }, []);
 
 // Refetch when filters change
 useEffect(() => {
     const timeoutId = setTimeout(() => {
-      fetchIPOs();
+      fetchIpos();
     }, 300); // Debounce search
 
     return () => clearTimeout(timeoutId);
@@ -136,7 +136,7 @@ useEffect(() => {
         ongoing: 1,
         upcoming: 2,
         listed: 3,
-        closed: 4
+        closed: 4,
       };
       
       if (statusPriority[a.status] !== statusPriority[b.status]) {
@@ -155,7 +155,7 @@ useEffect(() => {
 
   // Refresh data function
   const refreshData = () => {
-    fetchIPOs();
+    fetchIpos();
     fetchStats();
   };
 

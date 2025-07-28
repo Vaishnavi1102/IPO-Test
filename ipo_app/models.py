@@ -5,6 +5,11 @@ from django.db.models import FileField as ImageField
 IMAGE_FIELD_AVAILABLE = False
 
 
+STATUS_CHOICES = [
+    ('upcoming', 'Upcoming'),
+    ('ongoing', 'Ongoing'),
+    ('listed', 'Listed'),
+]
 class Company(models.Model):
     """Company model to match your companies table"""
     id = models.AutoField(primary_key=True, db_column='company_id')
@@ -18,21 +23,14 @@ class Company(models.Model):
         db_table = 'companies'
 
 
-        def __str__(self):
-           return self.company_name
+    def __str__(self):
+        return self.company_name
     
 
-    class IPO(models.Model):
-        STATUS_CHOICES = [
-            ('upcoming', 'Upcoming'),
-            ('ongoing', 'Ongoing'),
-            ('listed', 'Listed'),
-        ]
-
-
-        # Map to your existing database structure
+class IPO(models.Model):
+    # Map to your existing database structure
     id = models.AutoField(primary_key=True, db_column='ipo_id')
-    company = models.ForeignKey(Company, on_delete=models.CASCADE, db_column='company_id')
+    company = models.ForeignKey('Company', on_delete=models.CASCADE, db_column='company_id')
     price_band = models.CharField(max_length=50)
     open_date = models.DateField()
     close_date = models.DateField()
@@ -97,8 +95,3 @@ class Document(models.Model):
     
     class Meta:
         db_table = 'documents'
-
-
-
-
-

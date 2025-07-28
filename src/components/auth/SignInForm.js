@@ -11,7 +11,7 @@ const SignInForm = () => {
     const [showPassword, setShowPassword] = useState(false);
     const [rememberMe, setRememberMe] = useState(false);
 
-    const habdleChange = (e) => {
+    const handleChange = (e) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value
@@ -38,7 +38,7 @@ const SignInForm = () => {
                         name="email"
                         type="email"
                         value={formData.email}
-                        onChange={habdleChange}
+                        onChange={handleChange}
                         ClassName="appearance-none block w-full px-3 py-3 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                         placeholder="Enter your email address"
                         />

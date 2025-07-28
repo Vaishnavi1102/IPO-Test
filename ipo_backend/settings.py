@@ -133,6 +133,3 @@ CORS_ALLOWED_ORIGINS = config(
 
 CORS_ALLOW_CREDENTIALS = True
 
-# For development, allow all origins
-if DEBUG:
-    CORS_ALLOW_ALL_ORIGINS = True
